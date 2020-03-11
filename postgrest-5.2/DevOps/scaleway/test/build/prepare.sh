@@ -16,7 +16,6 @@ set +u
 set -u
 
 # generate nix file for the project
-#[[ -e ${SCRIPT_ABS_PATH}/../../../../postgrest.cabal ]] && cabal2nix . > ${SCRIPT_ABS_PATH}/nix/postgrest.nix
-cabal2nix ${SCRIPT_ABS_PATH}/../../../.. > ${SCRIPT_ABS_PATH}/nix/postgrest.nix
+ls ${SCRIPT_ABS_PATH}/../../../../*.cabal > /dev/null 2>&1 && cabal2nix ${SCRIPT_ABS_PATH}/../../../.. > ${SCRIPT_ABS_PATH}/nix/postgrest.nix
 
 done_banner "postgrest" "build prepare"
