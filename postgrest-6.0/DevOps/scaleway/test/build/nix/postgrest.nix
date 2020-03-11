@@ -39,6 +39,7 @@ mkDerivation {
     lens lens-aeson monad-control process protolude regex-tdfa text
     time transformers-base wai wai-extra
   ];
+  doCheck = false;
   homepage = "https://postgrest.org";
   description = "REST API for any Postgres database";
   license = stdenv.lib.licenses.mit;

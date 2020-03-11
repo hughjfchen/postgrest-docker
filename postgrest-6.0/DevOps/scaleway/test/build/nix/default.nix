@@ -8,6 +8,12 @@ let
           "${compiler}" = pkgs.haskell.packages."${compiler}".override {
             overrides = haskellPackagesNew: haskellPackagesOld: rec {
 
+              swagger2 =
+                haskellPackagesNew.callPackage ./swagger2.nix { };
+
+              hasql-pool =
+                haskellPackagesNew.callPackage ./hasql-pool.nix { };
+
               postgrest =
                 haskellPackagesNew.callPackage ./postgrest.nix { };
             };
