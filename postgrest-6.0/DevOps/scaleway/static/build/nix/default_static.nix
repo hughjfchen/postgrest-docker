@@ -195,7 +195,7 @@ in haskellPackages.developPackage {
          configureFlags+=$(for flag in $(${pkgconfig}/bin/pkg-config --static --libs openssl); do echo -n " --ld-option=$flag"; done)
        ''
       ];
-      setupHaskellDepends = (old.setupHaskellDepends or []) ++ [ (applyPatchesToCabalDrv pkgs.haskellPackages.Cabal_2_2_0_1 ) ] ;
+      setupHaskellDepends = (old.setupHaskellDepends or []) ++ [ (applyPatchesToCabalDrv pkgs.haskellPackages.Cabal_2_4_1_0 ) ] ;
       executablePkgconfigDepends = (old.executablePkgconfigDepends or []) ++ [openssl_static] ;
 
       isLibrary = false;
