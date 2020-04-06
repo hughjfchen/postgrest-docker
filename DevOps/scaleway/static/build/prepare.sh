@@ -18,7 +18,7 @@ get_last_stable_nix_channel () {
       Darwin) MY_CHANNEL_NAME_REGEX='s/.*\(nixpkgs-[0-9][0-9].[0-9][0-9]-darwin\).*/\1/p' ;;
       *) ;;
     esac
-    local MY_LAST_NIX_STABLE_CHANNEL=$(curl https://nixos.org/channels/ 2>/dev/null | grep -v "\-unstable" | grep -v "\-small" | sed -n ${MY_CHANNEL_NAME_REGEX} | sort | tail -1)
+    local MY_LAST_NIX_STABLE_CHANNEL=$(git ls-remote --heads https://github.com/NixOS/nixpkgs-channels | awk '{print $NF}' | awk -F"/" '{print $NF}' | grep -v "\-unstable" | grep -v "\-small" | sed -n ${MY_CHANNEL_NAME_REGEX} | sort | tail -2 | head -1)
     echo ${MY_LAST_NIX_STABLE_CHANNEL}
 }
 
